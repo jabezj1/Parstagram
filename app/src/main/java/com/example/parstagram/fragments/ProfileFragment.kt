@@ -15,6 +15,7 @@ class ProfileFragment: FeedFragment() {
         query.include(Post.KEY_USER)
         query.whereEqualTo(Post.KEY_USER,ParseUser.getCurrentUser())
         query.addDescendingOrder("createdAt")
+        query.setLimit(20)
         query.findInBackground(object : FindCallback<Post> {
             override fun done(posts: MutableList<Post>?, e: ParseException?) {
                 if( e != null){
